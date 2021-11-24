@@ -46,4 +46,9 @@ public class EventForm implements Serializable {
         employeeIds.add(employeeId);
     }
 
+    @Override
+    public String toString() {
+        return String.format("EventForm = [name='%s', address='%s', employeeIds=%s]", name, address, employeeIds.toString());
+    }
+
 }

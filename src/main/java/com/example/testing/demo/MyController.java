@@ -52,6 +52,7 @@ public class MyController {
         }
 
         LOG.warn("EventForm post received");
+        LOG.warn(eventForm.toString());
 
         // TODO : validate the form, persist it and then reset it to be empty
 
@@ -65,10 +66,9 @@ public class MyController {
     @GetMapping("/employee/select")
     public String selectEmployeeView(@ModelAttribute("eventForm") EventForm eventForm, Model model) {
 
-        List<Employee> allEmployees = employeeRepository.findAll();
-
-        // all employees that can be added (i.e. are not in the form already)
-        List<Employee> availableEmployees = allEmployees
+        // all employees that can still be added (= are not in the form already)
+        List<Employee> availableEmployees = employeeRepository
+                .findAll()
                 .stream()
                 .filter(e -> !eventForm.getEmployeeIds().contains(e.getId()))
                 .collect(Collectors.toList());
