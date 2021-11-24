@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+
+  <form th:inline="text" th:action="@{/event/create}" method="post" th:object="${eventForm}">
+
+      <h3>Event erstellen</h3>
+
+      <label>Name: </label><input type="text" th:field="*{name}"><br>
+      <label>Addresse: </label><input type="text" th:field="*{address}"><br>
+
+      <h3>Zugewiesene Mitarbeiter</h3>
+
+      <button type="submit" name="select_employee">Mitarbeiter auswählen</button>
+
+      <br>
+
+      <tr th:each="employee : ${selectedEmployees}">
+          <td>[[${employee.name}]]</td>
+          <td>[[${employee.jobTitle}]]</td>
+          <td><button type="submit" name="remove_employee" th:value="${employee.id}">Mitarbeiter entfernen</button><br></td>
+      </tr>
+
+      <br>
+
+      <button type="submit">Event erstellen</button>
+
+  </form>
+
+</head>
+<body>
+
+</body>
+</html>

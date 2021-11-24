@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+    <form th:inline="text" th:action="@{/employee/select}" method="post">
+
+        <tr th:each="employee : ${availableEmployees}">
+
+            <td>[[${employee.name}]]</td>
+            <td>[[${employee.jobTitle}]]</td>
+            <td>
+                <button type="submit" name="employeeId" th:value="${employee.id}">Auswählen</button>
+                <br>
+            </td>
+
+        </tr>
+
+    </form>
+
+</head>
+<body>
+
+</body>
+</html>
