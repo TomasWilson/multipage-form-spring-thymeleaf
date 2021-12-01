@@ -28,6 +28,10 @@ public class DemoApplication {
 		protected void configure(HttpSecurity http) throws Exception {
 
 			http.csrf().disable();
+
+			http.headers().frameOptions().disable(); 	// enables access to the h2 console
+			// TODO : remove this for release
+
 			http.authorizeRequests().antMatchers("/**").permitAll();
 		}
 
